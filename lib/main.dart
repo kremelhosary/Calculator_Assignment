@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'dart:async';
 
 
 void main(){
@@ -8,7 +9,6 @@ void main(){
     home: new MyApp(),
   ));
 }
-
 
 class MyApp extends StatefulWidget{
   @override
@@ -20,16 +20,8 @@ class _State extends State<MyApp> {
   double sub=0;
   double mul=0;
   double div =0;
-
   String _value1 = '';
   String _value2 = '';
-
-  void _onChange1(String value1){
-    setState(() => _value1 = value1);
-  }
-  void _onChange2(String value2){
-    setState(() => _value2 = value2);
-  }
 
   void _onSubmit1(String value1) => setState(()=> _value1 = value1);
   void _onSubmit2(String value2) => setState(()=> _value2 = value2);
@@ -47,19 +39,17 @@ class _State extends State<MyApp> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text('Name Here'),
+        title: new Text('00 Calculator 00'),
       ),
       body: new Container(
           padding: new EdgeInsets.all(32.0),
           child: new Center(
             child: new Column(
               children: <Widget>[
-
                 new TextField(
                     decoration: new InputDecoration(
                       labelText: 'first number',
@@ -68,7 +58,6 @@ class _State extends State<MyApp> {
                   autocorrect: true,
                   autofocus: true,
                   keyboardType: TextInputType.number,
-                  onChanged: _onChange1,
                   onSubmitted: _onSubmit1,
                 ),
 
@@ -78,7 +67,6 @@ class _State extends State<MyApp> {
                     icon: new Icon(Icons.people)
                   ),
                   keyboardType: TextInputType.number,
-                  onChanged: _onChange2,
                   onSubmitted: _onSubmit2,
                 ),
 
